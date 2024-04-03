@@ -1,6 +1,7 @@
 # Vehicle Location Tracking   
 
 <p align="center"><img src="https://github.com/suhyeong-jeon/Vehicle_Location_Tracking/assets/70623959/50e8e7c9-5e5b-43cb-be21-58fea42f302a"></p>
+<p align="center"><img src-"https://github.com/suhyeong-jeon/Vehicle_Location_Tracking/assets/70623959/5d18dbd2-0272-4011-a21c-10b036e4265f></p>
 
 #### * Created an AI model that detects and tracks the location of the car.
 #### * Created an algorithm that detects cars location(Left-Detection, Front-Detection, Right-Detection)   
