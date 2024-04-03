@@ -18,11 +18,17 @@ def video_tracking(model, cap, track_history):
         center_y = int(f_h/2)
 
         if success:
-            results = model.track(frame, persist=True)
+            results = model.track(frame, persist=True, conf=0.3)
+
 
             boxes = results[0].boxes.xywh.cpu()
             predicted_boxes = results[0].boxes.xyxy.cpu()
-            track_ids = results[0].boxes.id.int().cpu().tolist() # tensor -> 리스트로 변환
+            confs = results[0].boxes.conf
+
+            if results[0].boxes.id == None: # frame에서 아무것도 감지하지 못했을 경우 에러 발생해서 예외처리
+                track_ids = []
+            else:
+                track_ids = results[0].boxes.id.int().cpu().tolist() # tensor -> 리스트로 변환
 
             left_track_id = []
             front_track_id = []
@@ -34,7 +40,7 @@ def video_tracking(model, cap, track_history):
             cv2.putText(annotated_frame, "F-D : ", (600, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 0, 0), 2, cv2.LINE_AA)
             cv2.putText(annotated_frame, "R-D : ", (1150, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 0, 0), 2, cv2.LINE_AA)
 
-            for box, track_id, predicted_box in zip(boxes, track_ids, predicted_boxes):
+            for box, track_id, predicted_box, conf in zip(boxes, track_ids, predicted_boxes, confs):
                 x, y, w, h = box
                 x1, y1, x2, y2 = predicted_box
                 predicted_box_size = (y2-y1) * (x2-x1)
