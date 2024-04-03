@@ -1,7 +1,8 @@
 # Vehicle Location Tracking
 
-#### * Created an AI model that detects and tracks the location of the car.   
+#### * Created an AI model that detects and tracks the location of the car.
 #### * Created an algorithm that detects cars location(Left, Front, Right)   
+
 
 ### Training, Validation Dataset : [NUSCENES by Motional](https://www.nuscenes.org/nuscenes)
 ### Utilized Label Studio to detect and track a target class.
